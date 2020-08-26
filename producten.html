@@ -62,7 +62,7 @@
         
                 
               <div class="modal-footer d-flex justify-content-center">
-                <button class="btn btn-unique">bewaren <i class="fas fa-paper-plane-o ml-1"></i></button>
+                <button class="btn btn-unique">bewaren <i class="fas fa-paper-plane-o ml-1" onclick="myCreateFunction()"></i></button>
                 <button class="btn btn-unique">annuleren<i class="fas fa-paper-plane-o ml-1"></i></button>
               </div>
             </div>
@@ -70,7 +70,7 @@
         </div>
 
                         <!-- Button trigger modal -->
-                <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalContactForm">product toe voegen</a>
+                <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalContactForm" >product toe voegen</a>
 
                 
                 <!-- Modal -->
@@ -87,7 +87,7 @@
                         <p>wenst u dit product te verwideren</p>
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"onclick="verwijderen(this)">JA</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="verwijderen(this)">JA</button>
                         <button type="button" class="btn btn-primary">NEEN</button>
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="verwijderen(this)">
                             verwidern 
                           </button>
-                        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalContactForm">bewaren</a>
+                        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalContactForm" onclick="myCreateFunction()">bewaren</a>
         
                 </td>
                   </tr>
@@ -147,7 +147,7 @@
                     <td>@fat</td>
                     <td>@mdo</td>
                     <td>@mdo</td>
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="verwijderen(this)">
                         verwidern
                       </button>
                         <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalContactForm">bewaren</a>
@@ -160,7 +160,20 @@
                     <td>@fat</td>
                     <td>@fat</td>
                     <td>@mdo</td>
-                    <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="verwijderen(this)">
+                        verwidern
+                      </button>
+                        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalContactForm"onclick="myCreateFunction()">bewaren</a>
+        
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                    <td>@fat</td>
+                    <td>@mdo</td>
+                    <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="verwijderen(this)">
                         verwidern
                       </button>
                         <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalContactForm">bewaren</a>
@@ -173,20 +186,7 @@
                     <td>@fat</td>
                     <td>@fat</td>
                     <td>@mdo</td>
-                    <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        verwidern
-                      </button>
-                        <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalContactForm">bewaren</a>
-        
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>@fat</td>
-                    <td>@mdo</td>
-                    <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="verwijderen(this)">
                         verwidern
                       </button>
                         <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalContactForm">bewaren</a>
