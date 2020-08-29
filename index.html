@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producten Beheren</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="producten.css">
+    <script src="producten.js"></script>
+</head>
+<body onload="Initialize()">
+    <h1>Producten beheren</h1>
+
+    <form>
+        <table>
+            <tr>
+                <td>
+                    <label class="control-label" for="filterNaam">Naam</label>
+                </td>
+                <td>
+                    <label class="control-label" for="filterDesc">Omschrijving</label>
+                </td>
+                <td>
+                    <label class="control-label" for="filterPrice">Prijs</label>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="form-control" type="text" id="filterNaam">
+                </td>
+                <td>
+                    <input class="form-control" type="text" id="filterDesc">
+                </td>
+                <td>
+                    <input class="form-control" type="text" id="filterPrice">
+                </td>
+                <td>
+                    <input class="form-control btn btn-primary" type="submit" value="filter">
+                </td>
+            </tr>
+        </table>
+        </div>
+    </form>
+
+    <h2>Sorteer</h2>
+
+    <select class="form-control" name="sortTable" id="sortTable">
+        <option value="0">Naam</option>
+        <option value="2">Omschrijving</option>
+        <option value="3">Prijs</option>
+    </select>
+
+    <table id="products" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Naam</th>
+                <th>Categorie</th>
+                <th>Omschrijving</th>
+                <th>Prijs</th>
+                <th>Beeld</th>
+                <th width="300px"></th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+        
+</body>
+</html>
