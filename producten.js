@@ -116,6 +116,7 @@ function InsertProductInTable(name, category, description, price, image) {
 }
 
 
+}
 
 function verwijderen(btn) {
     var row = btn.parentNode.parentNode;
