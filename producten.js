@@ -47,35 +47,72 @@ var products = [
         description: "Aenean bibendum, tortor sed luctus tristique, ligula nulla blandit arcu, nec pharetra velit risus quis diam. Integer a turpis odio. Maecenas lacinia aliquet augue, non convallis elit. Sed non sem porttitor, tincidunt ipsum sed, interdum risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras fringilla arcu accumsan tellus pellentesque volutpat eu quis purus. ",
         image: "img_1.jpg"
     }
-]
+];
 
+// create an XMLHttpRequest to perform an AJAX action
+var request = new XMLHttpRequest(); 
+
+// The initialize function is called from body.onload in HTML
+// It configures the XMLHttpRequest and sends it to the server
 function Initialize() {
-    let tbody = document.querySelector("table#products>tbody");
+    // configure the request:
+    // We use the GET method (as shown at https://dataweb.stoplight.io/docs/dwapi/reference/dwAPI.v1.json/paths/~1item~1read/get)
+    // As a GET parameter, we use the url from that same page
+    request.open("GET", "https://api.data-web.be/item/read?project=QNyG0s83pm3i&entity=producten");
 
-    for(let i = 0; i < products.length; ++i) {
+    // When the server is ready and sends us a response, it needs a function to call
+    // We've created the function 'ProcessServerResponse' for this purpose
+    request.addEventListener("load", ProcessServerResponse);
+
+    // after configuring the request, we can send it to the server!
+    request.send();
+}
+
+// When the server is ready and sends us a response, it needs a function to call
+// We've created the function 'ProcessServerResponse' for this purpose
+function ProcessServerResponse() {
+    // get the response from the server as text
+    let responseText = request.responseText;
+    // the response is actually JSON, so we parse it as a JSON file/string
+    let responseJSON = JSON.parse(responseText);
+
+    // all products can be found in the JSON object
+    let products = responseJSON.data.items;
+
+    // loop over all products
+    for (let i = 0; i < products.length; ++i) {
+        // create a product variable, to temporarily save each product in the list of products
         let product = products[i];
 
-        let row = tbody.insertRow();
-
-        let cell = row.insertCell();
-        cell.innerHTML = product.name;
-
-        cell = row.insertCell();
-        cell.innerHTML = product.category;
-
-        cell = row.insertCell();
-        cell.innerHTML = product.description;
-
-        cell = row.insertCell();
-        cell.innerHTML = product.price;
-
-        cell = row.insertCell();
-        cell.innerHTML += `<img src="${product.image}">`;
-
-        cell = row.insertCell();
-        cell.innerHTML += '<button type="button" class="btn btn-primary" onclick="verwijderen(this)">verwijderen</button>';
-        cell.innerHTML += '<button type="button" class="btn btn-primary" onclick="bewaren(this)">bewaren</button>';
+        // insert the product in the table
+        InsertProductInTable(product.naam, product.categorie, product.omschrijving, product.prijs, product.afbeelding);
     }
+}
+
+
+function InsertProductInTable(name, category, description, price, image) {
+    let tbody = document.querySelector("table#products>tbody");
+
+    let row = tbody.insertRow();
+
+    let cell = row.insertCell();
+    cell.innerHTML = name;
+
+    cell = row.insertCell();
+    cell.innerHTML = category;
+
+    cell = row.insertCell();
+    cell.innerHTML = description;
+
+    cell = row.insertCell();
+    cell.innerHTML = price;
+
+    cell = row.insertCell();
+    cell.innerHTML += `<img src="${image}">`;
+
+    cell = row.insertCell();
+    cell.innerHTML += '<button type="button" class="btn btn-primary" onclick="verwijderen(this)">verwijderen</button>';
+    cell.innerHTML += '<button type="button" class="btn btn-primary" onclick="bewaren(this)">bewaren</button>';
 }
 
 
