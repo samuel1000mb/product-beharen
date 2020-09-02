@@ -1,4 +1,4 @@
-var products = [
+/* var products = [
     {
         id: 1,
         price: 400,
@@ -47,7 +47,7 @@ var products = [
         description: "Aenean bibendum, tortor sed luctus tristique, ligula nulla blandit arcu, nec pharetra velit risus quis diam. Integer a turpis odio. Maecenas lacinia aliquet augue, non convallis elit. Sed non sem porttitor, tincidunt ipsum sed, interdum risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras fringilla arcu accumsan tellus pellentesque volutpat eu quis purus. ",
         image: "img_1.jpg"
     }
-];
+];*/
 
 // create an XMLHttpRequest to perform an AJAX action
 var request = new XMLHttpRequest(); 
