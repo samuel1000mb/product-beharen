@@ -115,9 +115,6 @@ function InsertProductInTable(name, category, description, price, image) {
     cell.innerHTML += '<button type="button" class="btn btn-primary" onclick="bewaren(this)">bewaren</button>';
 }
 
-
-}
-
 function verwijderen(btn) {
     var row = btn.parentNode.parentNode;
     row.parentNode.removeChild(row);
