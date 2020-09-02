@@ -55,6 +55,7 @@ var request = new XMLHttpRequest();
 // The initialize function is called from body.onload in HTML
 // It configures the XMLHttpRequest and sends it to the server
 function Initialize() {
+    request = new XMLHttpRequest();
     // configure the request:
     // We use the GET method (as shown at https://dataweb.stoplight.io/docs/dwapi/reference/dwAPI.v1.json/paths/~1item~1read/get)
     // As a GET parameter, we use the url from that same page
@@ -75,6 +76,7 @@ function ProcessServerResponse() {
     let responseText = request.responseText;
     // the response is actually JSON, so we parse it as a JSON file/string
     let responseJSON = JSON.parse(responseText);
+    console.log(responseJSON);
 
     // all products can be found in the JSON object
     let products = responseJSON.data.items;
@@ -87,6 +89,40 @@ function ProcessServerResponse() {
         // insert the product in the table
         InsertProductInTable(product.naam, product.categorie, product.omschrijving, product.prijs, product.afbeelding);
     }
+}
+
+// adds a product from the add-product form
+function AddProductFromForm() {
+    // get all the necessary values from the form
+    let name = document.querySelector("form#newProduct>input[name='naam']").value;
+    let desc = document.querySelector("form#newProduct>input[name='omschrijving']").value;
+    let price = document.querySelector("form#newProduct>input[name='prijs']").value;
+    let img = document.querySelector("form#newProduct>input[name='afbeelding']").value;
+    let category = document.querySelector("form#newProduct>input[name='categorie']").value;
+
+    // call the addproduct function with the right values
+    AddProduct(name, category, desc, price, img);
+}
+
+// Adds a product to the database
+function AddProduct(name, category, description, price, image) {
+    // create a json object for the product
+    // this should be passed to the "values" value of the formdata
+    // e.g. {"naam": "Joske", "omschrijving": "Vermeulen", "afbeelding": "img3.jpg", "prijs": 54321, "categorie": "bbq"}
+    let productJSON = `{"naam": "${name}", "omschrijving": "${description}", "afbeelding": "${image}", "prijs": ${price}, "categorie": "${category}"}`;
+
+    // create a formdata object
+    let formData = new FormData();
+    // append the values of the productJSON variable
+    formData.append("values", productJSON);
+
+    // start a new request
+    request = new XMLHttpRequest();
+    // open the request with the correct URL
+    request.open("POST", "https://api.data-web.be/item/create?project=QNyG0s83pm3i&entity=producten");
+
+    // send the request to the server with the formData object in it's body
+    request.send(formData);
 }
 
 
